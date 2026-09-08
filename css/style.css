@@ -1078,7 +1078,7 @@ section.alt {
 .skill-item i {
     width: 19px;
     height: 19px;
-    stroke: var(--navy-2);
+    stroke: var(--cert-icon-color);
     fill: none;
     stroke-width: 1.7;
     flex-shrink: 0;
@@ -1945,3 +1945,344 @@ footer {
 /* =========================================================
                             END
 ========================================================= */
+
+/* =========================================================
+   PROJECT VIDEO + GITHUB ACTIONS
+========================================================= */
+
+.project-actions {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    width: max-content;
+    max-width: calc(100% - 28px);
+}
+
+.project-actions .project-github {
+    position: static;
+    width: auto;
+    min-width: 0;
+    height: 34px;
+    padding: 0 11px;
+    margin: 0;
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+.project-video-btn {
+    width: 34px;
+    min-width: 34px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    flex: 0 0 34px;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    background: rgba(15, 34, 64, 0.72);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 6px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    transition:
+        color 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project-video-btn svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+    stroke: none;
+}
+
+.project-video-btn:hover,
+.project-video-btn:focus-visible {
+    color: var(--navy);
+    background: var(--white);
+    border-color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Keep Projects 3 & 4 GitHub buttons compact */
+.project-card > .project-github {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 30;
+    width: max-content;
+    min-width: 0;
+    height: 34px;
+    padding: 0 11px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   CLICKABLE CERTIFICATE ICONS
+========================================================= */
+
+.cert-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+/* Helpful message shown when the visitor hovers over a certificate box */
+.cert-item::after {
+    content: "Click the icon to view the certificate";
+    position: absolute;
+    left: 18px;
+    bottom: calc(100% + 8px);
+    padding: 7px 10px;
+    border-radius: 6px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    z-index: 50;
+    box-shadow: 0 5px 14px rgba(15, 34, 64, 0.16);
+}
+
+.cert-item::before {
+    content: "";
+    position: absolute;
+    left: 32px;
+    bottom: calc(100% + 2px);
+    width: 7px;
+    height: 7px;
+    background: var(--navy);
+    transform: rotate(45deg);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 49;
+}
+
+.cert-item:hover::after,
+.cert-item:hover::before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.cert-item:hover::after {
+    transform: translateY(0);
+}
+
+.cert-icon-link {
+    display: inline-flex;
+    flex: 0 0 auto;
+    text-decoration: none;
+}
+
+/* Change this one value to change the certificate icon color */
+:root {
+    --cert-icon-color: #0f766e;
+    --cert-icon-hover-color: var(--navy);
+}
+
+.cert-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #b8c7dc;
+    border-radius: 50%;
+    background: #f4f7fb;
+    cursor: pointer;
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.cert-icon svg {
+    width: 18px;
+    height: 18px;
+    stroke: var(--cert-icon-color);
+    fill: none;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cert-icon-link:hover .cert-icon,
+.cert-icon-link:focus-visible .cert-icon {
+    transform: translateY(-2px);
+    background: var(--white);
+    border-color: var(--cert-icon-hover-color);
+    box-shadow: 0 5px 12px rgba(15, 34, 64, 0.15);
+}
+
+.cert-icon-link:hover .cert-icon svg,
+.cert-icon-link:focus-visible .cert-icon svg {
+    stroke: var(--cert-icon-hover-color);
+}
+
+/* =========================================================
+   PROJECT VIDEO MODAL
+========================================================= */
+
+.video-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.video-modal.is-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.video-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(7, 18, 34, 0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.video-modal-content {
+    position: relative;
+    z-index: 1;
+    width: min(900px, 100%);
+    background: var(--bg);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.25s ease;
+}
+
+.video-modal.is-open .video-modal-content {
+    transform: translateY(0) scale(1);
+}
+
+.video-modal-header {
+    min-height: 54px;
+    padding: 10px 14px 10px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: var(--navy);
+}
+
+.video-modal-header h3 {
+    color: var(--white);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.video-modal-close {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 6px;
+    background: transparent;
+    color: var(--white);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.video-modal-close:hover {
+    background: var(--white);
+    color: var(--navy);
+}
+
+.project-video-player {
+    display: block;
+    width: 100%;
+    max-height: 75vh;
+    background: #000;
+}
+
+body.video-modal-open {
+    overflow: hidden;
+}
+
+@media (max-width: 719px) {
+    .project-actions {
+        top: 12px;
+        right: 12px;
+        gap: 8px;
+        max-width: calc(100% - 24px);
+    }
+
+    .project-actions .project-video-btn {
+        width: 32px;
+        min-width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+
+    .project-actions .project-github,
+    .project-card > .project-github {
+        height: 32px;
+        padding: 0 9px;
+    }
+
+    .project-card > .project-github {
+        top: 12px;
+        right: 12px;
+        max-width: calc(100% - 24px);
+    }
+
+    .cert-item {
+        align-items: center;
+    }
+
+    .cert-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .video-modal {
+        padding: 12px;
+    }
+
+    .video-modal-header h3 {
+        font-size: 13px;
+    }
+}
