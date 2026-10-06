@@ -87,7 +87,7 @@ if ("IntersectionObserver" in window) {
 
 
 // =========================================================
-// CONTACT FORM - FORMSPREE
+// CONTACT FORM - WEB3FORMS
 // =========================================================
 
 const contactForm =
